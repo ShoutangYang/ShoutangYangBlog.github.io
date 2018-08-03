@@ -31,10 +31,10 @@ after_script:
 - git checkout master 
 - ls
 - cd ../
-# - mv .deploy_git/.git/ ./public/
+- mv .deploy_git/.git/ ./public/
 - cd ./public
 - ls
-- git init
+# - git init
 - git config user.name "ShoutangYang"
 - git config user.email "to_yst@163.com"
 - git remote -v
