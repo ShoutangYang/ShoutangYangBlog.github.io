@@ -35,6 +35,9 @@ after_script:
 - cd ./public
 - ls
 # - git init
+- git config --global credential.helper cache
+- git config --global credential.helper store
+
 - git config user.name "ShoutangYang"
 - git config user.email "to_yst@163.com"
 - git remote -v
