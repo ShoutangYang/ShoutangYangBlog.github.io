@@ -25,14 +25,15 @@ script:
 - hexo g
 - hexo d
 after_script:
-# - git clone https://${GH_REF} .deploy_git
-# - echo "$T_Token"
-# - cd .deploy_git
-# - ls
-# - cd ../
+- git clone https://${GH_REF} .deploy_git
+- echo "$T_Token"
+- cd .deploy_git
+- git checkout master 
+- ls
+- cd ../
 - cd ./public
 - ls
-- git init
+# - git init
 - git config user.name "ShoutangYang"
 - git config user.email "to_yst@163.com"
 - git add .
