@@ -1,0 +1,53 @@
+language: node_js
+node_js: stable
+before_install:
+
+- npm install -g hexo
+- npm install -g hexo-cli
+- npm install --save hexo-deployer-git
+- npm install --save-dev hexo-util
+
+# - openssl aes-256-cbc -K $encrypted_3d02be1b83a1_key -iv $encrypted_3d02be1b83a1_iv -in .travis/id_rsa_blog.enc -out ~/.ssh/id_rsa -d
+
+# - chmod 600 ~/.ssh/id_rsa
+
+# - eval $(ssh-agent)
+# - ssh-add ~/.ssh/id_rsa
+
+# - cp .travis/ssh_config ~/.ssh/config
+
+- export TZ='Asia/Shanghai'
+before_script: 
+install:
+- npm install
+script:
+- hexo clean
+- hexo g
+- hexo d
+after_script:
+# - git clone https://${GH_REF} .deploy_git
+# - echo "$T_Token"
+# - cd .deploy_git
+# - ls
+# - cd ../
+- cd ./public
+- ls
+- git init
+- git config user.name "ShoutangYang"
+- git config user.email "to_yst@163.com"
+- git add .
+- git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"
+- ls
+- git push --force --quiet "https://${T_Token}@${GH_REF}" master:master
+- ls
+branches:
+  only:
+  - dev
+env:
+  global:
+  - GH_REF: github.com/ShoutangYang/ShoutangYang.github.io.git
+notifications:
+  email:
+  - to_yst@163.com
+  on_success: change
+  on_failure: always

@@ -1,0 +1,33 @@
+language: node_js
+node_js: stable
+cache:
+  apt: true
+  directories:
+  - node_modules
+before_install:
+- npm install -g hexo
+- npm install -g hexo-cli
+- git config user.name "ShoutangYang"
+- git config user.email "to_yst@163.com"
+- export TZ='Asia/Shanghai'
+install:
+- npm install
+script:
+- hexo clean
+- hexo g
+after_script:
+- hexo deploy
+after_success:
+- hexo d
+branches:
+  only:
+  - master
+env:
+  global:
+  - GH_REF: github.com/ShoutangYang/ShoutangYang.github.io.git
+  - secure: HGGsTgo/eXoZi/21+Y5NlMOk8HSorH7BHuf7MnjY2IraZhYU5r6xOWuWeDVLibxrvGlvr2MPqMRYlvYI9PuBunflOiEYJku42LK1lJNna1vMfofnucO+lZcPmgxyGwWLZU83xJCwVoGpUCAKXosTfhSBIVfVuELF6q08ba6tb25LR7GRHLppVTYS9eqD+tsnX2qEo5JFKerb7s6zq8+I2OCCfZzMnbXVoiCkzh9VhLU8IcmIap9esWw+C6xIKt+FcWE7uH5mpmF036AyGIozr3KH0zA3mLvwVk8QJ3l2MZ/PeWWWasuM0Ghy/Hg59xZ3EX271liOz/En+ktM6idQktDW4yzDIbqQsgaKNuNdFg+74TsKYNcCybjfknRG/UdruhOw2AqQOITsiYz9MbU9snCJG8g9tZjEQJYc8YWIq5IeKprH8IwY4skkEp4aUiQWG9yQStjplq2BoxrKYssGeQ0JPw5vvpNCFq3Pdm4/51M/0rf9lAMrS1jEvzCoFF3+IlLgLUgy0Z7wlhA1NnF3NaVt9ojlks9QweI1HL00zuaP9hf2+QZfByn19JJnWp80PKtzi7/bt07XJAG3H+1CYwUDizugaVCCIp7GvWgZVluVQ+qOoNecEx8Qc75AvshBAB86usm+KipcAOfCakRB4etvypZyl/v8r2dUuyCVK/0=
+notifications:
+  email:
+  - to_yst@163.com
+  on_success: change
+  on_failure: always
