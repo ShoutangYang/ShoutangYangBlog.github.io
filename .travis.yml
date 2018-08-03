@@ -38,6 +38,7 @@ after_script:
 - git config user.name "ShoutangYang"
 - git config user.email "to_yst@163.com"
 - git remote -v
+- ssh -T git@github.com
 - git add .
 - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"
 - ls
