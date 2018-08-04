@@ -1,21 +1,10 @@
 language: node_js
 node_js: stable
 before_install:
-
 - npm install -g hexo
 - npm install -g hexo-cli
 - npm install --save hexo-deployer-git
 - npm install --save-dev hexo-util
-
-# - openssl aes-256-cbc -K $encrypted_3d02be1b83a1_key -iv $encrypted_3d02be1b83a1_iv -in .travis/id_rsa_blog.enc -out ~/.ssh/id_rsa -d
-
-# - chmod 600 ~/.ssh/id_rsa
-
-# - eval $(ssh-agent)
-# - ssh-add ~/.ssh/id_rsa
-
-# - cp .travis/ssh_config ~/.ssh/config
-
 - export TZ='Asia/Shanghai'
 before_script: 
 install:
@@ -23,31 +12,26 @@ install:
 script:
 - hexo clean
 - hexo g
-
 after_script:
 - git clone https://${GH_REF} .deploy_git
 - echo "$T_Token"
 - cd .deploy_git
-- git checkout master 
+- git checkout master
 - ls
 - cd ../
 - mv .deploy_git/.git/ ./public/
 - cd ./public
 - ls
-# - git init
 - git config --global credential.helper cache
 - git config --global credential.helper store
-
 - git config user.name "ShoutangYang"
 - git config user.email "to_yst@163.com"
 - git remote -v
 - ssh -T git@github.com
-
-
 - git add .
 - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"
 - ls
-- git push --force --quiet "https://${T_Token}@${GH_REF}" master:master
+- git push --force --quiet "https://${GH_Token}@${GH_REF}" master:master
 - ls
 branches:
   only:
@@ -55,6 +39,7 @@ branches:
 env:
   global:
   - GH_REF: github.com/ShoutangYang/ShoutangYang.github.io.git
+  - secure: WnGX/FilMQ3sH6n1bboK2Pwpegu0TR2KSPUKfaTJKr+NVRxg5ii4CZF0BGbi5utzqQ7/ird+WoEX8+pyThsOqMyniIYVXtqtTN9BE6gvBsXzWPyGOVTdRqHX371d7GTVF72xlgcpRQhn7e0bbBxaO78vAewCR1mGR7YLFMi7FcTT1uQJ/HXEZ6GOsjzsT0buPDilCmnN2epTMMWfdCu0wxOz/UMXuDK85LUfT8UwbVVz/yuZkjhO4TltnmH6JixtLGpiQn5d9m+z2uTFZJlGGpia3se6xoBo8V4W+OFvU1+A2gu5Z7wZKNaYDb9vSXJQv5n8nCPOhjaJlHNgzqi5Oax+0AClKN0ssNpA8gifAGRSvtGS88rmFbqwfmaUnXHNoMRBiCgo+dCE2VZJoQkod1/ggsJyHdFG70cx2+2BG4WyMM9vd8uGQY75zXQov6JryA1VJm7mfSCg6+qQYzQHtHj+nmLIEmQVKS+5bpoez0Orw1RNDFfZvG1v/r2KoZbyZyU/pkNFYUjXkZAZbumoMjs9+mEoqa7q6sq41yTJtNqc3vJe2Gge+w5vyQkZSeFNDpGw7dUOxVyyn5ga8V9KE0mP5rOaXi7U55zf3/WcvKdP1IV8wrLZoc5q6GslQBCVDcU4ytXIgXf5DN7yTHf/qTygkWYRPDM5jp2Iahz36Xw=
 notifications:
   email:
   - to_yst@163.com
