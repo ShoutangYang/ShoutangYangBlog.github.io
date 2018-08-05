@@ -39,8 +39,8 @@ after_script:
 - git add .
 - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"
 - ls
-- git push --quiet https://ShoutangYang:${T_Token}@github.com/ShoutangYang/ShoutangYang.github.io.git
-   master:master
+- git push --force --quiet https://ShoutangYang:${T_Token}@github.com/ShoutangYang/ShoutangYang.github.io.git
+   
 
 - ls
 branches:
