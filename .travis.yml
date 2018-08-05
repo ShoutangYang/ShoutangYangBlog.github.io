@@ -1,30 +1,26 @@
 language: node_js
 node_js: stable
 before_install:
-# - openssl aes-256-cbc -K $encrypted_ef7aaa76ab5b_key -iv $encrypted_ef7aaa76ab5b_iv
-#   -in id_rsa_blog.enc -out .\\.travis\\id_rsa_blog -d
-# - openssl aes-256-cbc -K $encrypted_ef7aaa76ab5b_key -iv $encrypted_ef7aaa76ab5b_iv
-#   -in id_rsa_blog.enc -out ~/.ssh/id_rsa -d
-
-# - chmod 600 ~/.ssh/id_rsa
-# - eval $(ssh-agent)
-# - ssh-add ~/.ssh/id_rsa
-# - cp .travis/ssh_config ~/.ssh/config
-
 
 - npm install -g hexo
 - npm install -g hexo-cli
 - npm install --save hexo-deployer-git
 - npm install --save-dev hexo-util
 - export TZ='Asia/Shanghai'
+
 before_script: 
+- git config user.name "TravisCI"
+- git config user.email "to_yst@163.com"
+- git config --global push.default simple
+
 install:
 - npm install
 script:
 - hexo clean
 - hexo g
 after_script:
-- git clone https://${GH_REF} .deploy_git
+
+- git clone --branch master https://${GH_REF} .deploy_git
 - echo "$T_Token"
 - cd .deploy_git
 - git checkout master
@@ -33,16 +29,17 @@ after_script:
 - mv .deploy_git/.git/ ./public/
 - cd ./public
 - ls
-- git config --global credential.helper cache
-- git config --global credential.helper store
-- git config user.name "ShoutangYang"
-- git config user.email "to_yst@163.com"
+# - git config --global credential.helper cache
+# - git config --global credential.helper store
+
+# - git config user.name "ShoutangYang"
+# - git config user.email "to_yst@163.com"
 - git remote -v
 - ssh -T git@github.com
 - git add .
 - git commit -m "Travis CI Auto Builder at `date +"%Y-%m-%d %H:%M"`"
 - ls
-- git push --force --quiet https://${T_Token}@github.com/ShoutangYang/ShoutangYang.github.io.git
+- git push --quiet https://ShoutangYang:${T_Token}@github.com/ShoutangYang/ShoutangYang.github.io.git
    master:master
 
 - ls
