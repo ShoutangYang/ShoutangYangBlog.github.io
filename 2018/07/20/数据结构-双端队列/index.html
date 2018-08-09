@@ -84,10 +84,10 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构-双端队列">
 <meta property="og:url" content="http://yoursite.com/2018/07/20/数据结构-双端队列/index.html">
-<meta property="og:site_name" content="Tony.Yang Station">
+<meta property="og:site_name" content="Tony.Yang Stationd">
 <meta property="og:description" content="Double-ended Queue概念双端队列是一种同时具有队列和栈的性质的数据结构。 双端队列中的元素可以从两边弹出，其限定插入和删除操作可以在两端进行。双端队列可以在队列任意一端 队列操作 Deque() 创建一个空的新队列。 它不需要参数，并返回一个空队列。 add_front(item) 从队首添加新元素。 它需要 item 作为参数，并不返回任何内容。 add_rear(item) 从">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-08T02:25:04.600Z">
+<meta property="og:updated_time" content="2018-08-09T09:00:48.190Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构-双端队列">
 <meta name="twitter:description" content="Double-ended Queue概念双端队列是一种同时具有队列和栈的性质的数据结构。 双端队列中的元素可以从两边弹出，其限定插入和删除操作可以在两端进行。双端队列可以在队列任意一端 队列操作 Deque() 创建一个空的新队列。 它不需要参数，并返回一个空队列。 add_front(item) 从队首添加新元素。 它需要 item 作为参数，并不返回任何内容。 add_rear(item) 从">
@@ -126,7 +126,7 @@
 
 
 
-  <title>数据结构-双端队列 | Tony.Yang Station</title>
+  <title>数据结构-双端队列 | Tony.Yang Stationd</title>
   
 
 
@@ -156,12 +156,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Tony.Yang Station</span>
+        <span class="site-title">Tony.Yang Stationd</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">coding guitar running</p>
+        <p class="site-subtitle">�� �� �� ⌚</p>
       
   </div>
 
@@ -298,7 +298,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tony.Yang Station">
+      <meta itemprop="name" content="Tony.Yang Stationd">
     </span>
 
     
@@ -400,7 +400,7 @@
 <li>isEmpty() 查看队列是否为空。它不需要参数，并返回布尔值。</li>
 <li>size() 返回队列中的项数。它不需要参数，并返回一个整数。</li>
 </ul>
-<h2 id="队列实现"><a href="#队列实现" class="headerlink" title="队列实现"></a>队列实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        构造函数：初始化list</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        self.__items =[]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">enqueue</span><span class="params">(self,item)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        列表头为队尾</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        self.__items.insert(<span class="number">0</span>,item)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dequeue</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        列表尾为列首，</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="keyword">return</span> self.__items.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.__items)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        队列为空</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="keyword">return</span> self.__items ==[]</span><br></pre></td></tr></table></figure>
+<h2 id="队列实现"><a href="#队列实现" class="headerlink" title="队列实现"></a>队列实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dequeue</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        self.__items=[]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_front</span><span class="params">(self,item)</span>:</span></span><br><span class="line">        self.__items.append(item)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_rear</span><span class="params">(self,item)</span>:</span></span><br><span class="line">        self.__items.insert(<span class="number">0</span>,item)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_front</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__items.pop()</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove_rear</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__items.pop(<span class="number">0</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.__items==[]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.__items)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        可迭代魔法函数</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="keyword">return</span> iter(self.__items)</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    DQ = Dequeue()</span><br><span class="line">    DQ.add_front(<span class="number">4</span>)</span><br><span class="line">    DQ.add_rear(<span class="number">10</span>)</span><br><span class="line">    DQ.add_front(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">    DQ.remove_front()</span><br><span class="line">    DQ.remove_rear()</span><br><span class="line">    DQ.remove_rear()</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> DQ:</span><br><span class="line">        print(item)</span><br></pre></td></tr></table></figure>
 <h2 id="队列应用"><a href="#队列应用" class="headerlink" title="队列应用"></a>队列应用</h2><ul>
 <li>回文检查</li>
 </ul>
